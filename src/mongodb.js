@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb+srv://whitelegend56:xYF6exMBZqXQLDfI@website.ddp2glq.mongodb.net/play-boiapp",{
+mongoose.connect("YOUR MOGODB URL",{
     useNewUrlParser:true,useUnifiedTopology:true
 })
 .then(()=>{
