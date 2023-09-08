@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="./public/css/home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h1 class="text-center">Welcome to Play bOi Home</h1>
+
+        <div class="serverbtn">
+            <button><a href="./girls" id="serverbtn" class="btnspinner">Connect to server<span class="spinner"></span></a></button>
+
+        </div>
+
+        <div class="load-wrapper">
+            <div class="lds-facebook">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        $(window).on("load", function () {
+            $(".load-wrapper").fadeOut("slow");
+        });
+
+    </script>
+    <script>
+        let btn = document.querySelector('button');
+
+        btn.addEventListener('click', function () {
+            // form submission starts
+            // button is disabled
+            btn.classList.add('spin');
+            btn.disabled = true;
+
+            // This disables the whole form via the fieldset
+            btn.form.firstElementChild.disabled = true;
+
+            // this setTimeout call mimics some asyncronous action
+            // you would have something else here
+            window.setTimeout(function () {
+                // when asyncronous action is done, remove the spinner
+                // re-enable button/fieldset
+                btn.classList.remove('spin');
+                btn.disabled = false;
+                btn.form.firstElementChild.disabled = false;
+            }, 4000);
+        }, false);
+    </script>
+    <script>
+
+
+        const ArrayofGirls = [
+            { name: "Priya", img: "../../public/img/priya.jpg" },
+            { name: "Ramya", img: "../../public/img/ramya.jpg" },
+            { name: "Megha", img: "../../public/img/Megha.jpg" },
+            { name: "Lakshmi", img: "../../public/img/Lakshmi.jpg" },
+            { name: "ishwarya", img: "../../public/img/ishwarya.jpg" },
+
+        ]
+
+        const serverBtn = document.getElementById("serverbtn");
+        serverBtn.addEventListener('click', (e) => {
+            const random = Math.floor(Math.random() * 5);//so it will be arounf 0,1,2
+            console.log(random);
+            var ans = ArrayofGirls[random];
+            var ansfin = JSON.stringify(ans)
+            console.log(ansfin);
+
+            localStorage.setItem("girlid", ansfin);
+        })
+
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
